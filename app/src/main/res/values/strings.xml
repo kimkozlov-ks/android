@@ -1,0 +1,19 @@
+<resources>
+    <string name="loginPhone">Your phone number</string>
+    <string name="loginPassword">Password</string>
+    <string name="loginRememberMe">RememberMe</string>
+    <string name="logIn">Log In</string>
+    <string name="loginForgotPassword">Forgot your password?</string>
+    <string name="questionnaire_complete_reg">Complete registration</string>
+    <string name="questionnaire_name">Your name</string>
+    <string name="questionnaire_last_name">Your last name</string>
+    <string name="questionnaire_length">Your length</string>
+    <string name="questionnaire_birthday">Your birthday</string>
+    <string name="next">next</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="weight">Weight</string>
+    <string name="accept">Accept</string>
+    <string name="Measurements">Measurements</string>
+
+
+</resources>

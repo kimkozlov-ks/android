@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginFragment"
+    android:background="@drawable/login_background"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="250dp"/>
+
+    <EditText
+        android:id="@+id/login_fragment_ed_phone"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="30dp"
+        android:hint="@string/loginPhone"
+        android:maxLines="1"
+        android:inputType="phone"
+        android:maxLength="12"
+        android:textColor="@color/white"/>
+    <EditText
+        android:id="@+id/login_fragment_ed_password"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:hint="@string/loginPassword"
+        android:textColor="@color/white"
+        android:maxLines="1"
+        android:inputType="textPassword"
+        android:maxLength="20"/>
+    <CheckBox
+        android:id="@+id/login_fragment_cb_remember"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="30dp"
+        android:text="@string/loginRememberMe"
+        android:textColor="@color/white" />
+    <Button
+        android:id="@+id/login_fragment_btn_log_in"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:text="@string/logIn"
+        android:background="@color/design_default_color_surface"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:text="@string/loginForgotPassword"
+        android:textColor="@color/white"/>
+
+
+
+
+
+</LinearLayout>

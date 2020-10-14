@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DashboardFragment">
+<!--   android:background="@drawable/login_background"-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true">
+        <ImageButton
+            android:id="@+id/dashboard_iv_profile"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="30dp"
+            android:src="@drawable/ic_profile"
+            android:background="@color/white"
+            android:layout_weight="1"/>
+
+        <ImageButton
+            android:id="@+id/dashboard_iv_notification"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="30dp"
+            android:src="@drawable/ic_notification"
+            android:background="@color/white"
+            android:layout_weight="1"/>
+        <ImageButton
+            android:id="@+id/dashboard_iv_add_measurement"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="30dp"
+            android:src="@drawable/ic_add_measurement"
+            android:background="@color/white"
+            android:layout_weight="1"
+            />
+
+        <ImageButton
+            android:id="@+id/dashboard_iv_add_today_diet"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="30dp"
+            android:src="@drawable/ic_add_measurement"
+            android:background="@color/white"
+            android:layout_weight="1"
+            />
+    </LinearLayout>
+</RelativeLayout>
