@@ -18,6 +18,14 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.utils.ColorTemplate;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -32,7 +40,7 @@ public class DashboardFragment extends Fragment {
     ImageView addMeasurement;
     ImageView profile;
     ImageView notification;
-
+    BarChart barChart;
 
     @Nullable
     @Override
@@ -51,12 +59,29 @@ public class DashboardFragment extends Fragment {
         addMeasurement = getActivity().findViewById(R.id.dashboard_iv_add_measurement);
         profile = getActivity().findViewById(R.id.dashboard_iv_profile);
         notification = getActivity().findViewById(R.id.dashboard_iv_notification);
+        barChart = getActivity().findViewById(R.id.dashboard_barchart);
 
         Call<List<Measurement>> call = APIClient.getInstance().getMeasurementService().getAllMeasurement();
         call.enqueue(new Callback<List<Measurement>>() {
             @Override
             public void onResponse(Call<List<Measurement>> call, Response<List<Measurement>> response) {
-                int z = 0;
+                int it = 0;
+                ArrayList<BarEntry> weights = new ArrayList<BarEntry>();
+                for (Measurement measurement: response.body()) {
+                    weights.add(new BarEntry(it, (float)measurement.getWeight()));
+                    it++;
+                }
+                for (Measurement measurement: response.body()) {
+                    weights.add(new BarEntry(it, (float)measurement.getWeight()));
+                    it++;
+                }
+                BarDataSet bardataset = new BarDataSet(weights, "Burn progress");
+                barChart.animateY(5000);
+
+                BarData data = new BarData(bardataset);
+                bardataset.setColors(ColorTemplate.JOYFUL_COLORS);
+                barChart.setData(data);
+                barChart.setVisibleXRange(4, 5);
             }
 
             @Override
