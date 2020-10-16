@@ -6,6 +6,33 @@
     tools:context=".DashboardFragment">
 <!--   android:background="@drawable/login_background"-->
 
+    <TextView
+        android:id="@+id/dashboard_start_weight"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_width="120dp"
+        android:layout_height="100dp"
+        android:textSize="50sp"
+        android:text="100"/>
+
+    <ImageView
+        android:layout_marginTop="60dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ic_arrow_wright"/>
+
+    <TextView
+        android:id="@+id/dashboard_end_weight"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_width="120dp"
+        android:layout_height="100dp"
+        android:textSize="50sp"
+        android:layout_alignParentEnd="true"
+        android:text="80"
+        android:textAlignment="viewEnd"/>
+
     <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/dashboard_barchart"
         android:layout_width="match_parent"

@@ -17,6 +17,9 @@ import com.android.volley.toolbox.JsonObjectRequest;
 
 import org.json.JSONObject;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+
 public class LoginFragment extends Fragment {
     Button login;
     EditText phone;
@@ -47,13 +50,29 @@ public class LoginFragment extends Fragment {
                 //  2. Recieve a token
                 //  3. Redirect to next fragment if everything is OK
 
-//                String url = "http://localhost:5001/login";
-//
-                Fragment questionnaireFragment = new QuestionnaireFragment();
-                getActivity().getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.container, questionnaireFragment, "questionnaire")
-                        .commit();
+                AuthUser authUser = new AuthUser();
+                authUser.setPhone(phone.getText().toString());
+                authUser.setPassword(password.getText().toString());
+
+                Call<AuthUser> call = APIClient.getInstance().getAuthService().authenticate(authUser);
+                call.enqueue(new Callback<AuthUser>() {
+                    @Override
+                    public void onResponse(Call<AuthUser> call, retrofit2.Response<AuthUser> response) {
+                        int z = 0;
+                        if(response.isSuccessful()) {
+                            Fragment questionnaireFragment = new QuestionnaireFragment();
+                            getActivity().getSupportFragmentManager()
+                                    .beginTransaction()
+                                    .replace(R.id.container, questionnaireFragment, "questionnaire")
+                                    .commit();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<AuthUser> call, Throwable t) {
+                        //
+                    }
+                });
             }
         });
     }

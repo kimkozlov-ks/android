@@ -8,12 +8,19 @@ import retrofit2.converter.gson.GsonConverterFactory;
 class APIClient {
 
     private static APIClient mInstance;
-    private static final String BASE_URL = "https://d98564cac720.ngrok.io/";
-    private Retrofit mRetrofit;
+    private static final String BASE_URL = "https://fbabbd43bcf3.ngrok.io/";
+    private static final String BASE_URL_AUTH = "https://9aa9ce15e0ff.ngrok.io/";
+    private Retrofit mRetrofitApi;
+    private Retrofit mRetrofitAuth;
 
     private APIClient() {
-        mRetrofit = new Retrofit.Builder()
+        mRetrofitApi = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        mRetrofitAuth = new Retrofit.Builder()
+                .baseUrl(BASE_URL_AUTH)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
     }
@@ -26,6 +33,10 @@ class APIClient {
     }
 
     public MeasurementService getMeasurementService() {
-        return mRetrofit.create(MeasurementService.class);
+        return mRetrofitApi.create(MeasurementService.class);
+    }
+
+    public AuthService getAuthService(){
+        return mRetrofitAuth.create(AuthService.class);
     }
 }
