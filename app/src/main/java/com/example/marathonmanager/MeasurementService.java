@@ -1,5 +1,7 @@
 package com.example.marathonmanager;
 
+import com.example.marathonmanager.pojo.Measurement;
+
 import java.util.List;
 
 import retrofit2.Call;

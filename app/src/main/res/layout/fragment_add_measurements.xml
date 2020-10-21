@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,35 +7,56 @@
     android:background="@drawable/login_background"
     android:orientation="vertical">
 
+    <ImageView
+        android:id="@+id/add_measurements_fragment_iv_arrow_back"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="20dp"
+        android:src="@drawable/ic_arrow_back"/>
+
     <TextView
+        android:id="@+id/add_measurements_fragment_tv_measurements"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="50dp"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginTop="30dp"
+        android:layout_below="@id/add_measurements_fragment_iv_arrow_back"
         android:text="@string/Measurements"
         android:textSize="30sp"
         android:textColor="@color/white"/>
+
+    <DatePicker
+        android:id="@+id/add_measurements_fragment_date_picker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:datePickerMode="spinner"
+        android:calendarViewShown="false"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/add_measurements_fragment_tv_measurements" />
 
     <EditText
         android:id="@+id/add_measurements_fragment_ed_weight"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_marginStart="30dp"
+        android:layout_below="@id/add_measurements_fragment_date_picker"
         android:layout_marginEnd="30dp"
         android:maxLines="1"
         android:hint="@string/weight"
         android:maxLength="255"
         android:textColor="@color/white"/>
 
+
     <Button
         android:id="@+id/add_measurements_fragment_btn_accept"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:layout_below="@id/add_measurements_fragment_ed_weight"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:text="@string/accept"
         android:background="@color/design_default_color_surface"/>
 
-</LinearLayout>
+</RelativeLayout>

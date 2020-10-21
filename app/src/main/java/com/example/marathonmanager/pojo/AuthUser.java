@@ -1,4 +1,4 @@
-package com.example.marathonmanager;
+package com.example.marathonmanager.pojo;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -8,7 +8,7 @@ public class AuthUser {
     @SerializedName("Password")
     private String mPassword;
 
-    AuthUser(){
+    public AuthUser(){
     }
 
     public String getPhone() {
@@ -20,7 +20,7 @@ public class AuthUser {
     }
 
     public String getPassword() {
-        return mPhone;
+        return mPassword;
     }
 
     public void setPassword(String password) {

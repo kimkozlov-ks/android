@@ -1,32 +1,28 @@
 package com.example.marathonmanager;
 
-import android.annotation.SuppressLint;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.marathonmanager.pojo.Measurement;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
-import java.lang.reflect.Array;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -43,6 +39,8 @@ public class DashboardFragment extends Fragment {
     ImageView notification;
     TextView weightStart;
     TextView weightEnd;
+    TextView weightStartDate;
+    TextView weightEndDate;
     BarChart barChart;
 
     @Nullable
@@ -65,28 +63,43 @@ public class DashboardFragment extends Fragment {
         barChart = getActivity().findViewById(R.id.dashboard_barchart);
         weightStart = getActivity().findViewById(R.id.dashboard_start_weight);
         weightEnd = getActivity().findViewById(R.id.dashboard_end_weight);
+        weightStartDate = getActivity().findViewById(R.id.dashboard_start_weight_date);
+        weightEndDate = getActivity().findViewById(R.id.dashboard_end_weight_date);
 
+        addMeasurement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                        .add(R.id.container, new AddMeasurementsFragment(), "measurementsFragment")
+                        .commit();
+            }
+        });
+    }
+
+    public void onResume() {
+        super.onResume();
         Call<List<Measurement>> call = APIClient.getInstance().getMeasurementService().getAllMeasurement();
         call.enqueue(new Callback<List<Measurement>>() {
             @Override
             public void onResponse(Call<List<Measurement>> call, Response<List<Measurement>> response) {
-                int it = 0;
+                int it = 1;
                 ArrayList<BarEntry> weights = new ArrayList<BarEntry>();
-                for (Measurement measurement: response.body()) {
-                    weights.add(new BarEntry(it, (float)measurement.getWeight()));
-                    it++;
-                }
-                for (Measurement measurement: response.body()) {
-                    weights.add(new BarEntry(it, (float)measurement.getWeight()));
+                for (Measurement measurement : response.body()) {
+                    weights.add(new BarEntry(it, (float) measurement.getWeight()));
                     it++;
                 }
 
-                weightStart.setText(response.body().get(0).toString());
-                weightEnd.setText(response.body().get(response.body().size() - 1).toString());
-
+                weightStart.setText(String.valueOf(response.body().get(0).getWeight()));
+                weightEnd.setText(String.valueOf(response.body().get(response.body().size() - 1).getWeight()));
+                DateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
+                String formattedDate = formatter.format(response.body().get(0).getDate());
+                weightStartDate.setText(formattedDate.toString());
+                formattedDate = formatter.format(response.body().get(response.body().size() - 1).getDate());
+                weightEndDate.setText(formattedDate);
 
                 BarDataSet bardataset = new BarDataSet(weights, "Burn progress");
-                barChart.animateY(5000);
+                barChart.animateY(500);
 
                 BarData data = new BarData(bardataset);
                 bardataset.setColors(ColorTemplate.JOYFUL_COLORS);
@@ -96,18 +109,7 @@ public class DashboardFragment extends Fragment {
 
             @Override
             public void onFailure(Call<List<Measurement>> call, Throwable t) {
-                System.out.println(t.getMessage());
-            }
-        });
-
-        addMeasurement.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Fragment addMeasurementsFragment =  new AddMeasurementsFragment();
-
-                getActivity().getSupportFragmentManager()
-                        .beginTransaction()
-                        .add(R.id.container, addMeasurementsFragment, "addMeasurementsFragment")
-                        .commit();
+                Toast.makeText(getActivity(), "No Data Available",Toast.LENGTH_LONG).show();
             }
         });
     }
