@@ -75,6 +75,16 @@ public class DashboardFragment extends Fragment {
                         .commit();
             }
         });
+
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                        .add(R.id.container, new ProfileFragment(), "profileFragment")
+                        .commit();
+            }
+        });
     }
 
     public void onResume() {

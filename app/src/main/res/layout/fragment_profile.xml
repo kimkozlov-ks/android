@@ -1,14 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileFragment">
+    tools:context=".ProfileFragment"
+    android:background="@drawable/login_background">
 
-    <!-- TODO: Update blank fragment layout -->
+    <ImageView
+        android:id="@+id/profile_iv_arrow_back"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="20dp"
+        android:src="@drawable/ic_arrow_back"/>
+    <ImageView
+        android:id="@+id/profile_accept_iv"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="30dp"
+        android:visibility="invisible"
+        android:src="@drawable/ic_accept"/>
     <TextView
+        android:layout_width="110dp"
+        android:layout_marginLeft="30dp"
+        android:layout_height="70dp"
+        android:text="Name: "
+        android:layout_below="@id/profile_iv_arrow_back"
+        android:textSize="20sp"
+        android:gravity="center_vertical"/>
+    <EditText
+        android:id="@+id/profile_name_tv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_marginEnd="100dp"
+        android:layout_marginStart="140dp"
+        android:layout_below="@id/profile_iv_arrow_back"
+        android:layout_height="70dp"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:gravity="center_vertical"
+        android:enabled="false"/>
+    <ImageView
+        android:id="@+id/profile_name_edit_iv"
+        android:layout_width="95dp"
+        android:layout_height="70dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/profile_iv_arrow_back"
+        android:src="@drawable/ic_edit"/>
+    <TextView
+        android:layout_width="110dp"
+        android:layout_marginLeft="30dp"
+        android:layout_height="70dp"
+        android:text="Last Name: "
+        android:layout_below="@id/profile_name_tv"
+        android:textSize="20sp"
+        android:gravity="center_vertical"/>
+    <EditText
+        android:id="@+id/profile_last_name_tv"
+        android:layout_width="match_parent"
+        android:layout_marginEnd="100dp"
+        android:layout_marginStart="140dp"
+        android:layout_below="@id/profile_name_tv"
+        android:layout_height="70dp"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:gravity="center_vertical"
+        android:enabled="false"/>
+    <ImageView
+        android:id="@+id/profile_last_name_edit_iv"
+        android:layout_width="95dp"
+        android:layout_height="70dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/profile_name_tv"
+        android:src="@drawable/ic_edit"/>
+    <TextView
+        android:layout_width="110dp"
+        android:layout_marginLeft="30dp"
+        android:layout_height="70dp"
+        android:text="Phone: "
+        android:layout_below="@id/profile_last_name_tv"
+        android:textSize="20sp"
+        android:gravity="center_vertical"/>
+    <EditText
+        android:id="@+id/profile_phone_tv"
+        android:layout_width="match_parent"
+        android:layout_marginEnd="100dp"
+        android:layout_marginStart="140dp"
+        android:layout_below="@id/profile_last_name_tv"
+        android:layout_height="70dp"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:gravity="center_vertical"
+        android:enabled="false"/>
+    <ImageView
+        android:id="@+id/profile_phone_edit_iv"
+        android:layout_width="95dp"
+        android:layout_height="70dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/profile_last_name_tv"
+        android:src="@drawable/ic_edit"/>
+    <TextView
+        android:layout_width="110dp"
+        android:layout_marginLeft="30dp"
+        android:layout_height="70dp"
+        android:text="Birthday: "
+        android:layout_below="@id/profile_phone_tv"
+        android:textSize="20sp"
+        android:gravity="center_vertical"/>
+    <EditText
+        android:id="@+id/profile_birthday_tv"
+        android:layout_width="match_parent"
+        android:layout_marginEnd="100dp"
+        android:layout_marginStart="140dp"
+        android:layout_below="@id/profile_phone_tv"
+        android:layout_height="70dp"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:gravity="center_vertical"
+        android:enabled="false"/>
+    <!--<ImageView
+        android:id="@+id/profile_birthday_edit_iv"
+        android:layout_width="95dp"
+        android:layout_height="70dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/profile_phone_tv"
+        android:src="@drawable/ic_edit"/>-->
+    <TextView
+        android:layout_width="110dp"
+        android:layout_marginLeft="30dp"
+        android:layout_height="70dp"
+        android:text="Lenght: "
+        android:layout_below="@id/profile_birthday_tv"
+        android:textSize="20sp"
+        android:gravity="center_vertical"/>
+    <EditText
+        android:id="@+id/profile_length_tv"
+        android:layout_width="match_parent"
+        android:layout_marginEnd="100dp"
+        android:layout_marginStart="140dp"
+        android:layout_below="@id/profile_birthday_tv"
+        android:layout_height="70dp"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:gravity="center_vertical"
+        android:enabled="false"/>
+    <ImageView
+        android:id="@+id/profile_length_edit_iv"
+        android:layout_width="95dp"
+        android:layout_height="70dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/profile_birthday_tv"
+        android:src="@drawable/ic_edit"/>
 
-</FrameLayout>
+</RelativeLayout>
